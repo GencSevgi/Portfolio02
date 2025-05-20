@@ -1,0 +1,24 @@
+﻿<h3>TODO List</h3>
+<ul>
+    @foreach (var item in todos)
+    {
+        <li>@item</li>
+    }
+</ul>
+<input type="text" @bind="newTodo" />
+<button class="btn btn-success" @onclick="AddTodo">Add</button>
+
+@code {
+    private List<string> todos = new List<string>();
+    private string newTodo = string.Empty;
+
+    private void AddTodo()
+    {
+        if (!string.IsNullOrWhiteSpace(newTodo))
+        {
+            todos.Add(newTodo);
+            newTodo = string.Empty;
+        }
+    }
+}
+
